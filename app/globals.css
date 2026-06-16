@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@theme {
+  /* Markenfarben — Rot (Primär) + Gold/Bronze (Akzent) + Anthrazit */
+  --color-brand: #cc3300;
+  --color-brand-600: #b32d00;
+  --color-brand-700: #992600;
+  --color-gold: #bd9a65;
+  --color-gold-light: #e5c089;
+  --color-ink: #1c1b1a;
+  --color-ink-light: #56524d;
+  --color-anthracite: #2b2a28;
+  --color-anthracite-900: #1a1917;
+  --color-paper: #ffffff;
+  --color-haze: #f4f2ef;
+  --color-line: rgba(28, 27, 26, 0.12);
+  --color-line-soft: rgba(28, 27, 26, 0.07);
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+
+  --ease-signature: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --shadow-card: 0 10px 40px -12px rgba(42, 42, 41, 0.18);
+  --shadow-card-hover: 0 28px 60px -18px rgba(42, 42, 41, 0.28);
+}
+
+:root {
+  --header-h: 112px;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+/* Fluid headings */
+.h-display {
+  font-size: clamp(2.6rem, 6vw, 5.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+.h-section {
+  font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+  line-height: 1.01;
+  letter-spacing: -0.032em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+/* Mono-Tag — bewusstes Spec-Sheet-Label-System (linksbündig, ingenieurmäßig) */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+.tag::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+.tag-light {
+  color: var(--color-gold-light);
+}
+
+/* Alias: bestehende .eyebrow-Nutzung übernimmt den neuen Tag-Look */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+.eyebrow::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+.eyebrow-light {
+  color: var(--color-gold-light);
+}
+
+/* Monospace-Datenwerte (Specs, Codes, Kennzahlen) */
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+/* Technisches Hairline-Raster als dezente Textur */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line-soft) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.bg-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Pill buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.95rem 1.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition: all 0.4s var(--ease-signature);
+  cursor: pointer;
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--color-brand);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--color-brand-700);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -10px rgba(204, 51, 0, 0.5);
+}
+.btn-gold {
+  background: var(--color-gold);
+  color: #fff;
+}
+.btn-gold:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+.btn-outline {
+  border: 1.5px solid currentColor;
+  background: transparent;
+}
+.btn-outline-gold {
+  border: 1.5px solid var(--color-gold);
+  color: var(--color-gold);
+  background: transparent;
+}
+.btn-outline-gold:hover {
+  background: var(--color-gold);
+  color: #fff;
+}
+.btn-ghost-light {
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  background: transparent;
+}
+.btn-ghost-light:hover {
+  background: #fff;
+  color: var(--color-ink);
+}
+
+/* Diagonal cut helpers */
+.clip-diag-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%);
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  filter: blur(6px);
+  transition:
+    opacity 0.9s var(--ease-signature),
+    transform 0.9s var(--ease-signature),
+    filter 0.9s var(--ease-signature);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.container-px {
+  padding-left: clamp(1.25rem, 5vw, 5rem);
+  padding-right: clamp(1.25rem, 5vw, 5rem);
+}
