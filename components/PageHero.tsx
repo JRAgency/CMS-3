@@ -21,7 +21,7 @@ export function PageHero({
       />
       <div className="container-px relative mx-auto max-w-[1400px]">
         <nav className="mono mb-7 flex items-center gap-2 text-[0.72rem] uppercase tracking-wider text-white/45">
-          <Link href="/" className="transition-colors hover:text-gold">
+          <Link href="/" className="transition-colors hover:text-brand">
             Start
           </Link>
           <span>/</span>

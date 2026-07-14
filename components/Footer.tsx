@@ -27,14 +27,14 @@ export function Footer() {
               <a
                 href={`tel:${site.contact.phoneHref}`}
                 aria-label="Anrufen"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/50 text-gold transition-colors hover:bg-gold hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-brand/45 text-brand transition-colors hover:bg-brand hover:text-white"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
               </a>
               <a
                 href={`mailto:${site.contact.email}`}
                 aria-label="E-Mail"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/50 text-gold transition-colors hover:bg-gold hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-brand/45 text-brand transition-colors hover:bg-brand hover:text-white"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 5L2 7" /></svg>
               </a>
@@ -51,7 +51,7 @@ export function Footer() {
                 <li key={p.slug}>
                   <Link
                     href={`/produkte/${p.slug}`}
-                    className="transition-colors hover:text-gold"
+                    className="transition-colors hover:text-brand"
                   >
                     {p.name}
                   </Link>
@@ -75,7 +75,7 @@ export function Footer() {
                 { label: "Datenschutz", href: "/datenschutz" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="transition-colors hover:text-gold">
+                  <Link href={l.href} className="transition-colors hover:text-brand">
                     {l.label}
                   </Link>
                 </li>
@@ -97,7 +97,7 @@ export function Footer() {
               </p>
               <p className="pt-2">
                 <span className="text-white/50">Tel </span>
-                <a href={`tel:${site.contact.phoneHref}`} className="text-gold hover:underline">
+                <a href={`tel:${site.contact.phoneHref}`} className="text-brand hover:underline">
                   {site.contact.phone}
                 </a>
               </p>
@@ -106,7 +106,7 @@ export function Footer() {
                 {site.contact.fax}
               </p>
               <p>
-                <a href={`mailto:${site.contact.email}`} className="text-gold hover:underline">
+                <a href={`mailto:${site.contact.email}`} className="text-brand hover:underline">
                   {site.contact.email}
                 </a>
               </p>

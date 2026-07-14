@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, JetBrains_Mono } from "next/font/google";
+import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,10 +7,12 @@ import { RevealObserver } from "@/components/RevealObserver";
 import { CookieBanner } from "@/components/CookieBanner";
 import { site } from "@/lib/site";
 
-const archivo = Archivo({
+// Hausschrift: frei lizenziert (OFL), selbst-gehostet via next/font (DSGVO-konform).
+// Geometrischer Grotesk mit klarer, premium-automotiver Anmutung.
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-archivo",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-hanken",
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -71,7 +73,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="de" className={`${archivo.variable} ${mono.variable}`}>
+    <html lang="de" className={`${hanken.variable} ${mono.variable}`}>
       <body>
         <script
           type="application/ld+json"

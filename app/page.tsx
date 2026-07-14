@@ -1,27 +1,43 @@
 import Link from "next/link";
 import Image from "next/image";
 import { products, site } from "@/lib/site";
-import { ProductCard } from "@/components/ProductCard";
 import { Stats } from "@/components/Stats";
 import { ClientMarquee } from "@/components/ClientMarquee";
+import { MachineFinder } from "@/components/MachineFinder";
 
-const workflow = [
-  { n: "01", title: "Auftragserfassung", desc: "Ihre Kunden bestellen selbst mit viaDuct-3D Customer – die Bestellung kommt direkt in die Fertigung." },
-  { n: "02", title: "Arbeitsvorbereitung", desc: "Auf Knopfdruck entstehen Werkstattpapiere, Etiketten und CNC-Daten für jede Maschine." },
-  { n: "03", title: "Fertigung", desc: "Daten stehen über das Firmennetzwerk an plasmaWASP, plasmaDragon & varioFormer bereit." },
-  { n: "04", title: "Verladekontrolle", desc: "Mit viaScanner wird jedes Teil beim Verladen erfasst – kein Teil bleibt liegen." },
-  { n: "05", title: "Rechnung", desc: "Nach Rückmeldung ins Büro erstellen Sie die Rechnung auf Knopfdruck." },
+const quickActions = [
+  {
+    label: "01",
+    title: "Fertigungsberatung",
+    desc: "Wir analysieren Ihren Werkstatt-Ablauf und empfehlen die passende Kombination aus Maschine und Software.",
+    href: "/kontakt",
+    cta: "Beratung anfragen",
+  },
+  {
+    label: "02",
+    title: "Technische Daten",
+    desc: "Arbeitsbereiche, Blechstärken, Editionen und Schnittstellen – alle Spezifikationen im Überblick.",
+    href: "/produkte",
+    cta: "Zu den Produkten",
+  },
+  {
+    label: "03",
+    title: "2.000+ Installationen",
+    desc: "viaDuct-3D Customer ist das bewährteste Bestellprogramm der Luftkanal-Branche, weltweit im Einsatz.",
+    href: "/referenzen",
+    cta: "Referenzen ansehen",
+  },
+  {
+    label: "04",
+    title: "Service aus einer Hand",
+    desc: "Ersatzteile, Wartung und Software-Hotline direkt vom Hersteller – kein Umweg über Dritte.",
+    href: "/service",
+    cta: "Service & Support",
+  },
 ];
 
-const ticker = [
-  "Plasmaschneiden",
-  "Luftkanalbau",
-  "Blechbearbeitung",
-  "CNC-Steuerungen",
-  "Fertigungssoftware",
-  "Schalldämpferkulissen",
-  "Made in Kaiserslautern",
-];
+const flagship = products.find((p) => p.slug === "plasmawasp")!;
+const software = products.find((p) => p.slug === "viaduct-3d")!;
 
 export default function HomePage() {
   return (
@@ -29,29 +45,28 @@ export default function HomePage() {
       {/* ---------- HERO ---------- */}
       <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-anthracite-900">
         <Image
-          src="/img/hero-sparks.jpg"
-          alt="Funkenflug bei der Blechbearbeitung für den Luftkanalbau"
+          src="/img/hero-plasma.jpg"
+          alt="Plasmaschneidanlage in der Fertigung für den Luftkanalbau"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-anthracite-900 via-anthracite-900/55 to-anthracite-900/35" />
-        <div className="absolute inset-0 bg-gradient-to-r from-anthracite-900/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-anthracite-900 via-anthracite-900/40 to-anthracite-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-anthracite-900/75 via-anthracite-900/20 to-transparent" />
 
-        <div className="container-px relative mx-auto w-full max-w-[1400px] pb-12 pt-44 md:pb-16">
-          <p className="eyebrow tag-light reveal">Luftkanalbau-Systeme</p>
-          <h1 className="reveal mt-7 max-w-[16ch] text-white h-display" data-delay="80">
-            Maschinen &amp; Software für den{" "}
-            <span className="text-brand">Luftkanalbau</span>
+        <div className="container-px relative mx-auto w-full max-w-[1560px] pb-14 pt-40 md:pb-20">
+          <p className="eyebrow eyebrow-light reveal">Luftkanalbau-Systeme</p>
+          <h1 className="reveal mt-6 max-w-[18ch] text-white h-display" data-delay="80">
+            Das komplette System für den Luftkanalbau
           </h1>
-          <p className="reveal mt-7 max-w-lg text-lg leading-relaxed text-white/85" data-delay="160">
-            {site.claim} Maschinen, Steuerungen und Software – entwickelt und
-            gebaut aus einer Hand.
+          <p className="reveal lead mt-7 max-w-xl text-white/80" data-delay="160">
+            Maschinen, Steuerungen und Software – entwickelt und gebaut aus einer
+            Hand. Vom Auftrag bis zum LKW.
           </p>
-          <div className="reveal mt-9 flex flex-wrap gap-4" data-delay="240">
+          <div className="reveal mt-9 flex flex-wrap gap-3" data-delay="240">
             <Link href="/produkte" className="btn btn-primary">
-              Produkte entdecken
+              Maschinen entdecken
             </Link>
             <Link href="/kontakt" className="btn btn-ghost-light">
               Beratung anfragen
@@ -61,14 +76,14 @@ export default function HomePage() {
 
         {/* Technische Spec-Leiste */}
         <div className="reveal relative w-full border-t border-white/15" data-delay="320">
-          <div className="container-px mx-auto grid max-w-[1400px] grid-cols-1 divide-white/15 sm:grid-cols-3 sm:divide-x">
+          <div className="container-px mx-auto grid max-w-[1560px] grid-cols-1 divide-white/15 sm:grid-cols-3 sm:divide-x">
             {[
               { k: "Standort", v: "Kaiserslautern, DE" },
               { k: "Erfahrung", v: "20+ Jahre Luftkanalbau" },
               { k: "System", v: "viaDuct-3D · 8 Sprachen" },
             ].map((d) => (
               <div key={d.k} className="flex items-baseline gap-3 py-5 sm:px-7 sm:first:pl-0">
-                <span className="mono text-[0.7rem] uppercase tracking-wider text-gold-light">
+                <span className="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-gold-light">
                   {d.k}
                 </span>
                 <span className="text-sm font-semibold text-white/90">{d.v}</span>
@@ -78,177 +93,144 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- TICKER ---------- */}
-      <div className="border-b border-line bg-anthracite py-4 text-white">
-        <div className="flex items-center gap-3 overflow-hidden">
-          <div className="marquee-track flex w-max animate-marquee items-center">
-            {[...ticker, ...ticker].map((t, i) => (
-              <span key={i} className="flex items-center text-sm font-semibold uppercase tracking-wider text-white/70">
-                <span className="px-7">{t}</span>
-                <span className="text-gold">◆</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ---------- SYSTEM / USP ---------- */}
-      <section className="container-px mx-auto max-w-[1400px] py-24 md:py-32">
-        <div className="grid items-end gap-x-12 gap-y-6 border-b border-line pb-12 lg:grid-cols-[1.5fr_1fr]">
-          <div>
-            <p className="eyebrow reveal">Durchgängiges System</p>
-            <h2 className="reveal mt-6 max-w-[18ch] h-section" data-delay="80">
-              Vom Auftrag bis zum LKW, alles greift ineinander
+      {/* ---------- MASCHINEN-FINDER (Audi-Modellraster) ---------- */}
+      <section className="container-px mx-auto max-w-[1560px] py-24 md:py-32">
+        <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div className="max-w-2xl">
+            <p className="eyebrow reveal">Unser Programm</p>
+            <h2 className="reveal mt-5 h-section" data-delay="80">
+              Maschinen &amp; Software im Überblick
             </h2>
           </div>
-          <p className="reveal text-lg leading-relaxed text-ink-light lg:pb-2" data-delay="140">
-            Unsere Software deckt jeden Schritt ab, von der Auftragserfassung bis
-            zur Fertigung in der Werkshalle. So sind alle Produktionsschritte
-            aufeinander abgestimmt.
+          <p className="reveal max-w-md text-ink-light" data-delay="120">
+            Vom Plasmaschneiden über das Umformen bis zur Fertigungssoftware –
+            jede Komponente greift ins System.
           </p>
         </div>
+        <div className="reveal" data-delay="160">
+          <MachineFinder />
+        </div>
+      </section>
 
-        {/* Desktop: horizontaler Prozesspfad */}
-        <div className="reveal relative mt-24 hidden lg:block">
-          {/* Schiene */}
-          <div className="absolute left-[10%] right-[10%] top-[38px] h-px -translate-y-1/2 bg-ink/12" />
-          <div className="absolute left-[10%] right-[10%] top-[38px] h-px -translate-y-1/2 bg-gradient-to-r from-gold/70 to-brand" />
-          {/* Terminal-Markierungen */}
-          <div className="absolute left-[10%] top-[38px] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold ring-4 ring-white" />
-          <div className="absolute right-[10%] top-[38px] h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand ring-4 ring-white" />
-          <span className="mono absolute right-[10%] top-0 -translate-x-1/2 -translate-y-8 whitespace-nowrap text-[0.62rem] uppercase tracking-wider text-brand">
-            → Versand
-          </span>
-
-          <div className="grid grid-cols-5">
-            {workflow.map((step) => (
-              <div key={step.n} className="group flex flex-col items-center px-5 text-center">
-                <div
-                  className="relative z-10 grid h-[76px] w-[76px] place-items-center rounded-full bg-white shadow-[0_16px_36px_-14px_rgba(28,27,26,0.35)] transition-transform duration-500 group-hover:-translate-y-1.5"
-                  style={{ transitionTimingFunction: "var(--ease-signature)" }}
-                >
-                  <span className="absolute inset-0 rounded-full ring-1 ring-ink/12 transition-colors duration-500 group-hover:ring-brand" />
-                  <span className="absolute inset-[8px] rounded-full border border-dashed border-ink/15" />
-                  <span className="mono text-lg font-bold tracking-tight text-ink transition-colors duration-500 group-hover:text-brand">
-                    {step.n}
-                  </span>
-                </div>
-                <h3 className="mt-7 text-lg font-bold tracking-tight text-ink">
-                  {step.title}
+      {/* ---------- QUICK ACTIONS ---------- */}
+      <section className="border-y border-line bg-haze">
+        <div className="container-px mx-auto max-w-[1560px]">
+          <div className="grid grid-cols-1 divide-y divide-line md:grid-cols-2 md:divide-x lg:grid-cols-4 lg:divide-y-0">
+            {quickActions.map((a, i) => (
+              <Link
+                key={a.title}
+                href={a.href}
+                className="group reveal flex flex-col p-8 transition-colors duration-300 hover:bg-white md:p-10"
+                data-delay={(i % 4) * 70}
+              >
+                <span className="text-sm font-semibold text-brand">{a.label}</span>
+                <h3 className="mt-4 text-xl font-bold tracking-tight text-ink">
+                  {a.title}
                 </h3>
-                <p className="mt-2.5 max-w-[22ch] text-sm leading-relaxed text-ink-light">
-                  {step.desc}
+                <p className="mt-2.5 flex-1 text-sm leading-relaxed text-ink-light">
+                  {a.desc}
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile / Tablet: vertikaler Prozesspfad */}
-        <ol className="relative mt-16 lg:hidden">
-          <div className="absolute bottom-10 left-[38px] top-4 w-px -translate-x-1/2 bg-gradient-to-b from-gold/70 to-brand" />
-          {workflow.map((step, i) => (
-            <li
-              key={step.n}
-              className="reveal group flex gap-6 pb-10 last:pb-0"
-              data-delay={i * 70}
-            >
-              <div className="relative z-10 grid h-[76px] w-[76px] shrink-0 place-items-center rounded-full bg-white shadow-[0_16px_36px_-14px_rgba(28,27,26,0.3)]">
-                <span className="absolute inset-0 rounded-full ring-1 ring-ink/12 transition-colors duration-500 group-hover:ring-brand" />
-                <span className="absolute inset-[8px] rounded-full border border-dashed border-ink/15" />
-                <span className="mono text-lg font-bold text-ink transition-colors duration-500 group-hover:text-brand">
-                  {step.n}
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors group-hover:text-brand">
+                  {a.cta}
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
                 </span>
-              </div>
-              <div className="pt-3.5">
-                <h3 className="text-lg font-bold tracking-tight text-ink">{step.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink-light">{step.desc}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* ---------- PRODUKTE ---------- */}
-      <section className="bg-haze py-24 md:py-32">
-        <div className="container-px mx-auto max-w-[1400px]">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-            <div className="max-w-2xl">
-              <p className="eyebrow reveal">Unsere Produkte</p>
-              <h2 className="reveal mt-5 h-section" data-delay="80">
-                Innovative Maschinen &amp; Software
-              </h2>
-            </div>
-            <Link href="/produkte" className="btn btn-outline text-brand reveal" data-delay="120">
-              Alle Produkte
-            </Link>
-          </div>
-
-          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((p, i) => (
-              <div key={p.slug} className="reveal" data-delay={(i % 3) * 90}>
-                <ProductCard product={p} index={i} />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ---------- ÜBER UNS + STATS ---------- */}
-      <section className="container-px mx-auto max-w-[1400px] py-24 md:py-32">
-        <div className="grid items-center gap-14 lg:grid-cols-2">
-          <div className="reveal relative aspect-[5/6] overflow-hidden rounded-3xl">
+      {/* ---------- FLAGSHIP SHOWCASE (dunkel, cinematic) ---------- */}
+      <section className="relative overflow-hidden bg-anthracite-900">
+        <Image
+          src="/img/hero-sparks.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-anthracite-900 via-anthracite-900/70 to-anthracite-900/20" />
+        <div className="container-px relative mx-auto grid max-w-[1560px] items-center gap-12 py-24 md:py-32 lg:grid-cols-2">
+          <div>
+            <p className="eyebrow eyebrow-light reveal">Flaggschiff</p>
+            <h2 className="reveal mt-5 text-white h-section" data-delay="80">
+              {flagship.name}
+            </h2>
+            <p className="reveal lead mt-6 max-w-lg text-white/80" data-delay="140">
+              {flagship.short}
+            </p>
+            <div className="reveal mt-9 grid max-w-lg grid-cols-3 gap-4 border-y border-white/15 py-6" data-delay="180">
+              {flagship.specs?.slice(0, 3).map((s) => (
+                <div key={s.label}>
+                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-gold-light">
+                    {s.label}
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-white">{s.value}</p>
+                </div>
+              ))}
+            </div>
+            <div className="reveal mt-9 flex flex-wrap gap-3" data-delay="220">
+              <Link href={`/produkte/${flagship.slug}`} className="btn btn-primary">
+                Maschine ansehen
+              </Link>
+              <Link href="/kontakt" className="btn btn-ghost-light">
+                Angebot anfragen
+              </Link>
+            </div>
+          </div>
+          <div className="reveal relative aspect-[4/3] overflow-hidden rounded-3xl bg-white/95 shadow-2xl" data-delay="160">
             <Image
-              src="/img/about-coil.jpg"
-              alt="Blechbearbeitung – galvanisiertes Blech in der Fertigung"
+              src={flagship.image}
+              alt={flagship.name}
+              fill
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="object-contain p-10"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- SOFTWARE SHOWCASE (hell, editorial) ---------- */}
+      <section className="container-px mx-auto max-w-[1560px] py-24 md:py-32">
+        <div className="grid items-center gap-14 lg:grid-cols-2">
+          <div className="reveal relative order-2 aspect-[4/3] overflow-hidden rounded-3xl bg-haze lg:order-1">
+            <Image
+              src={software.image}
+              alt={software.name}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-anthracite-900/70 to-transparent p-8">
-              <p className="text-sm font-semibold uppercase tracking-wider text-gold-light">
-                Rationelle Fertigung
-              </p>
-              <p className="mt-1 text-xl font-bold text-white">
-                Einfach &amp; intuitiv zu bedienen
-              </p>
-            </div>
           </div>
-
-          <div>
-            <p className="eyebrow reveal">Über CMS 3</p>
+          <div className="order-1 lg:order-2">
+            <p className="eyebrow reveal">Fertigungssoftware</p>
             <h2 className="reveal mt-5 h-section" data-delay="80">
-              Maschinen höchster Qualität – aus einer Hand
+              {software.name}
             </h2>
-            <div className="reveal mt-6 space-y-4 text-ink-light" data-delay="140">
-              <p>
-                Seit über 20 Jahren sind wir darauf spezialisiert, Maschinen,
-                Steuerungen und Software für den Produktionsbereich – insbesondere
-                den Luftkanalbau – herzustellen. Weil wir alles selbst entwickeln
-                und bauen, können wir uns an Ihre Kundenwünsche anpassen.
-              </p>
-              <p>
-                Während andere Hersteller mit großen Service-Teams prahlen,
-                überzeugen unsere Produkte durch sehr hohe Verfügbarkeit:
-                integrierte Service- und Diagnosefunktionen sowie ein modularer
-                Aufbau sorgen im seltenen Störungsfall für die schnellste
-                Wiederaufnahme der Produktion.
-              </p>
-            </div>
-            <Link href="/unternehmen" className="btn btn-primary reveal mt-8" data-delay="200">
-              Mehr über uns
+            <p className="reveal lead mt-6 max-w-lg text-ink-light" data-delay="140">
+              {software.intro}
+            </p>
+            <ul className="reveal mt-8 max-w-lg space-y-3" data-delay="180">
+              {software.features.slice(0, 4).map((f) => (
+                <li key={f} className="flex gap-3 text-ink">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                  <span className="text-[0.98rem] leading-relaxed">{f}</span>
+                </li>
+              ))}
+            </ul>
+            <Link href={`/produkte/${software.slug}`} className="btn btn-dark reveal mt-9" data-delay="220">
+              Software entdecken
             </Link>
           </div>
         </div>
-
       </section>
 
       {/* ---------- KENNZAHLEN (dunkles Band) ---------- */}
       <section className="bg-grid-dark relative overflow-hidden bg-anthracite-900 py-20 md:py-24">
-        <div className="container-px relative mx-auto max-w-[1400px]">
+        <div className="container-px relative mx-auto max-w-[1560px]">
           <div className="grid items-end gap-x-12 gap-y-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="reveal">
-              <p className="eyebrow tag-light">In Zahlen</p>
+              <p className="eyebrow eyebrow-light">In Zahlen</p>
               <h2 className="mt-6 max-w-[12ch] text-white h-section">
                 Bewährt, nicht behauptet
               </h2>
@@ -262,10 +244,10 @@ export default function HomePage() {
 
       {/* ---------- REFERENZEN ---------- */}
       <section className="border-y border-line bg-white py-20">
-        <div className="container-px mx-auto max-w-[1400px]">
+        <div className="container-px mx-auto max-w-[1560px]">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <p className="eyebrow reveal justify-center">Referenzen</p>
-            <h2 className="reveal mt-5 text-3xl font-extrabold tracking-tight md:text-4xl" data-delay="80">
+            <h2 className="reveal mt-5 h-section" data-delay="80">
               Vertraut von Kunden aus aller Welt
             </h2>
             <p className="reveal mt-4 text-ink-light" data-delay="120">
@@ -286,7 +268,7 @@ export default function HomePage() {
           sizes="100vw"
           className="object-cover opacity-25"
         />
-        <div className="container-px relative mx-auto max-w-[1400px] text-center">
+        <div className="container-px relative mx-auto max-w-[1560px] text-center">
           <h2 className="reveal mx-auto max-w-3xl text-balance text-white h-section">
             Bereit für eine rationellere Fertigung?
           </h2>
@@ -294,8 +276,8 @@ export default function HomePage() {
             Sprechen Sie mit uns über die optimale Ausstattung Ihrer Werkstatt –
             von der Software bis zur Maschine.
           </p>
-          <div className="reveal mt-10 flex flex-wrap justify-center gap-4" data-delay="160">
-            <Link href="/kontakt" className="btn btn-gold">
+          <div className="reveal mt-10 flex flex-wrap justify-center gap-3" data-delay="160">
+            <Link href="/kontakt" className="btn btn-primary">
               Jetzt Kontakt aufnehmen
             </Link>
             <a href={`tel:${site.contact.phoneHref}`} className="btn btn-ghost-light">

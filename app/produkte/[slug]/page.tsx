@@ -56,9 +56,9 @@ export default async function ProductPage({
       <section className="bg-anthracite-900 pb-12 pt-40 text-white">
         <div className="container-px mx-auto max-w-[1400px]">
           <nav className="mb-6 flex items-center gap-2 text-xs text-white/50">
-            <Link href="/" className="hover:text-gold">Start</Link>
+            <Link href="/" className="hover:text-brand">Start</Link>
             <span>/</span>
-            <Link href="/produkte" className="hover:text-gold">Produkte</Link>
+            <Link href="/produkte" className="hover:text-brand">Produkte</Link>
             <span>/</span>
             <span className="text-white/80">{product.name}</span>
           </nav>
