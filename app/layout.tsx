@@ -47,7 +47,8 @@ export const metadata: Metadata = {
     title: `${site.name} – ${site.tagline}`,
     description: site.description,
   },
-  robots: { index: true, follow: true },
+  // Agentur-Demo: nicht indexieren. Vor Livegang auf index/follow: true stellen.
+  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({
