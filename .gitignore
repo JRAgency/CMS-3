@@ -31,3 +31,5 @@ next-env.d.ts
 
 # interne Recherche / Analyse (nur lokal, nicht ins Repo)
 /website-analyse
+
+.vercel
